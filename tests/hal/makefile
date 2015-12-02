@@ -31,6 +31,7 @@ stm32f4xx_hal_dma_ex.c \
 stm32f4xx_hal_eth.c \
 stm32f4xx_hal_flash.c \
 stm32f4xx_hal_flash_ex.c \
+stm32f4xx_hal_flash_ramfunc.c \
 stm32f4xx_hal_gpio.c \
 stm32f4xx_hal_hash.c \
 stm32f4xx_hal_hash_ex.c \
@@ -47,6 +48,7 @@ stm32f4xx_hal_nand.c \
 stm32f4xx_hal_nor.c \
 stm32f4xx_hal_pccard.c \
 stm32f4xx_hal_pcd.c \
+stm32f4xx_hal_pcd_ex.c \
 stm32f4xx_hal_pwr.c \
 stm32f4xx_hal_pwr_ex.c \
 stm32f4xx_hal_rcc.c \
