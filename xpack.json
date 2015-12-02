@@ -1,0 +1,59 @@
+{
+	"$schema": "http://xcdl.github.io/schemas/xpack-1-1.json",
+	"name": "ilg-stm32f4-hal",
+	"description": "STM32F4 HAL files.",
+	"xcdlFile": ".xcdl.json",
+	"repository": 
+	{
+		"type": "git",
+		"url": "https://github.com/xpacks/stm32f4-hal.git"
+	},
+
+	"version": "0.1.0",
+	"releases": [
+		
+	],
+
+	"keywords": [
+		"arm",
+		"stm32",
+		"stm32f4",
+		"hal"
+	],
+
+	"homepage": "https://github.com/xpacks/stm32f4-hal",
+	"bugs": [
+		{
+			"description": "All issues.",
+			"url": "https://github.com/xpacks/stm32f4-hal/issues"
+		}
+	],
+
+	"license": "LicenseRef-LICENSE.txt",
+	"maintainers": [
+		{
+			"name": "Liviu Ionescu",
+			"email": "ilg@livius.net",
+			"url": "http://liviusdotnet.worldpress.com"
+		}
+	],
+
+	"contributors": [
+		{
+			"name": "STMicroelectronics"
+		},
+
+		{
+			"name": "Liviu Ionescu",
+			"email": "ilg@livius.net",
+			"url": "http://liviusdotnet.worldpress.com"
+		}
+	],
+
+	"dependencies": [
+		{
+			"name": "ilg_stm32f4_cmsis",
+			"version": ">=1.0.0"
+		}
+	]
+}
