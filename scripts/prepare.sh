@@ -7,7 +7,8 @@ IFS=$'\n\t'
 # This file is part of the xPacks project (https://xpacks.github.io).
 #
 
-RELEASE_VERSION="100"
+# RELEASE_VERSION="100"
+RELEASE_VERSION="110"
 
 FAMILY="STM32F4"
 GITHUB_PROJECT="xpacks/stm32f4-hal"
@@ -43,7 +44,7 @@ echo "Removing unnecessary files..."
 rm -rf \
 Drivers/BSP/ \
 Drivers/CMSIS/ \
-Drivers/STM32F?xx?HAL?Driver/*.chm \
+Drivers/STM32F?xx_HAL_Driver/*.chm \
 STM32Cube_* \
 
 find . -name '*.exe' -exec rm \{} \;
@@ -72,14 +73,14 @@ These files were extracted from \`${ARCHIVE_NAME}\`.
 
 To save space, only the following folder was copied:
 
-* STM32Cube*/Drivers
+* STM32Cube\_FW\_*/Drivers
 
 and from it, the following folders/files were removed:
 
 * all non-portable *.exe files
 * Drivers/BSP/
 * Drivers/CMSIS/
-* Drivers/STM32F?xx?HAL?Driver/*.chm
+* Drivers/STM32F?xx\_HAL\_Driver/*.chm
 
 ## Changes
 

@@ -5,7 +5,7 @@ includes the STM32F4 HAL files.
 
 ## Version
 
-* v100
+* v110
 
 ## Documentation
 
@@ -16,18 +16,18 @@ The latest STM documentation is available from
 
 The original files are available in the `originals` branch.
 
-These files were extracted from `stm32cube_fw_f4_v100.zip`.
+These files were extracted from `stm32cube_fw_f4_v110.zip`.
 
 To save space, only the following folder was copied:
 
-* STM32Cube*/Drivers
+* STM32Cube\_FW\_*/Drivers
 
 and from it, the following folders/files were removed:
 
 * all non-portable *.exe files
 * Drivers/BSP/
 * Drivers/CMSIS/
-* Drivers/STM32F?xx?HAL?Driver/*.chm
+* Drivers/STM32F?xx\_HAL\_Driver/*.chm
 
 ## Changes
 
