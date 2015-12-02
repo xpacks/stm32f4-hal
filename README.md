@@ -1,2 +1,2 @@
-# stm324-hal
-STM32F4 HAL files
+This project does not use the `master` branch, please
+switch to the `xpack` branch to get the project files.
