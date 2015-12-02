@@ -30,6 +30,7 @@ stm32f4xx_hal_dcmi_ex.c \
 stm32f4xx_hal_dma.c \
 stm32f4xx_hal_dma2d.c \
 stm32f4xx_hal_dma_ex.c \
+stm32f4xx_hal_dsi.c \
 stm32f4xx_hal_eth.c \
 stm32f4xx_hal_flash.c \
 stm32f4xx_hal_flash_ex.c \
@@ -46,7 +47,9 @@ stm32f4xx_hal_i2s.c \
 stm32f4xx_hal_i2s_ex.c \
 stm32f4xx_hal_irda.c \
 stm32f4xx_hal_iwdg.c \
+stm32f4xx_hal_lptim.c \
 stm32f4xx_hal_ltdc.c \
+stm32f4xx_hal_ltdc_ex.c \
 stm32f4xx_hal_msp_template.c \
 stm32f4xx_hal_nand.c \
 stm32f4xx_hal_nor.c \
@@ -81,7 +84,7 @@ stm32f4xx_ll_usb.c
 
 OBJS=$(SRCS:.c=.o)
 
-CWARNFLAGS+= -Wno-unused-parameter -Wno-conversion -Wno-missing-prototypes -Wno-missing-declarations -Wno-sign-compare -Wno-unused-but-set-variable -Wno-unused-variable
+CWARNFLAGS+= -Wno-unused-parameter -Wno-conversion -Wno-missing-prototypes -Wno-missing-declarations -Wno-sign-compare -Wno-unused-but-set-variable -Wno-unused-variable -Wno-bad-function-cast
 
 all:			srcs $(OBJS)
 
