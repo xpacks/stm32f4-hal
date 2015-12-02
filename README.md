@@ -31,5 +31,5 @@ and from it, the following folders/files were removed:
 
 ## Changes
 
-* none.
+* `stm32f4xx\_hal.h`: silence `-Wpadded`.
 
