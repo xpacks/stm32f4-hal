@@ -7,7 +7,7 @@ To run the test, go to the packet folder and start the script:
 
 ```
 PATH=/usr/local/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH
-cd stm32f4-hal-pack
+cd stm32f4-hal-xpack
 bash ../../../scripts/run-tests.sh
 ```
 
