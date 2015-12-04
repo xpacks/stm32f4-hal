@@ -84,15 +84,23 @@ stm32f4xx_ll_usb.c
 
 OBJS=$(SRCS:.c=.o)
 
-CWARNFLAGS+= -Wno-unused-parameter -Wno-conversion -Wno-missing-prototypes -Wno-missing-declarations -Wno-sign-compare -Wno-unused-but-set-variable -Wno-unused-variable -Wno-bad-function-cast
+CNOWARNFLAGS= -Wno-unused-parameter -Wno-conversion -Wno-missing-prototypes -Wno-missing-declarations -Wno-sign-compare -Wno-unused-but-set-variable -Wno-unused-variable -Wno-bad-function-cast
 
-all:			srcs $(OBJS)
+all:			srcs hal.elf
 
+hal.elf:		$(OBJS) main.o config.o
+	$(CC) $(CFLAGS) -Wl,-Map,"$(@:.elf=.map)" -o "$@" $(OBJS) config.o main.o
+	arm-none-eabi-size --format=berkeley "hal.elf"
+	
 srcs:
 	cp -r "$(PARENT)/Drivers/STM32F4xx_HAL_Driver/Src"/* .
 
+main.o:			main.c
+
+config.o:		config.c
+
 %.o:
-	$(CC) $(CPU) $(DEFINES) $(CFLAGS) $(WARNFLAGS) $(CWARNFLAGS) $(INCLUDES) -c -o "$@" "$(@:.o=.c)"
+	$(CC) $(CPU) $(DEFINES) $(CFLAGS) $(WARNFLAGS) $(CWARNFLAGS) $(CNOWARNFLAGS) $(INCLUDES) -c -o "$@" "$(@:.o=.c)"
 
 
 .PHONY:			all srcs
