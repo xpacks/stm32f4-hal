@@ -104,7 +104,7 @@ typedef enum
 
 #if (USE_RTOS == 1)
   /* Reserved for future use */
-  #error “USE_RTOS should be 0 in the current HAL release”
+  #error "USE_RTOS should be 0 in the current HAL release"
 #else
   #define __HAL_LOCK(__HANDLE__)                                           \
                                 do{                                        \
