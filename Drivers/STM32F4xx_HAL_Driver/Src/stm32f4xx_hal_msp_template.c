@@ -40,6 +40,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 
+// [ILG]
+#if defined ( __GNUC__ )
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-prototypes"
+#endif
+
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
   */
@@ -115,5 +121,10 @@ void HAL_PPP_MspDeInit(void)
 /**
   * @}
   */
+
+// [ILG]
+#if defined ( __GNUC__ )
+#pragma GCC diagnostic pop
+#endif
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
