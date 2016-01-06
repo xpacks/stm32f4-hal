@@ -33,3 +33,12 @@ and from it, the following folders/files were removed:
 
 * `stm32f4xx\_hal.h`: silence `-Wpadded`.
 
+## Warnings
+
+To silence warnings when compiling the HAL drivers, use:
+
+```
+-Wno-sign-conversion -Wno-padded -Wno-conversion -Wno-unused-parameter \
+-Wno-bad-function-cast -Wno-sign-compare
+```
+
