@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# 
+#
 # Copyright (c) 2015 Liviu Ionescu.
 # This file is part of the xPacks project (https://xpacks.github.io).
 #
@@ -16,7 +16,8 @@ IFS=$'\n\t'
 # RELEASE_VERSION="160"
 # RELEASE_VERSION="170"
 # RELEASE_VERSION="180"
-RELEASE_VERSION="190"
+# RELEASE_VERSION="190"
+RELEASE_VERSION="1100"
 
 FAMILY="STM32F4"
 GITHUB_PROJECT="xpacks/stm32f4-hal"
@@ -96,4 +97,5 @@ and from it, the following folders/files were removed:
 
 EOF
 
-echo "Done."
+echo
+echo Check if ok and when ready, issue: \`git commit -m ${ARCHIVE_NAME}\`
