@@ -5,7 +5,7 @@ includes the STM32F4 HAL files.
 
 ## Version
 
-* v1100
+* v1110
 
 ## Documentation
 
@@ -16,7 +16,7 @@ The latest STM documentation is available from
 
 The original files are available in the `originals` branch.
 
-These files were extracted from `stm32cube_fw_f4_v1100.zip`.
+These files were extracted from `stm32cube_fw_f4_v1110.zip`.
 
 To save space, only the following folder was copied:
 
