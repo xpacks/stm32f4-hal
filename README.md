@@ -42,3 +42,9 @@ To silence warnings when compiling the HAL drivers, use:
 -Wno-bad-function-cast -Wno-sign-compare
 ```
 
+## Tests
+
+```
+export PATH=/usr/local/gcc-arm-none-eabi-5_2-2015q4/bin:$PATH
+bash ../../../scripts/run-tests.sh
+```
