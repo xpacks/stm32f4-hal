@@ -1978,6 +1978,8 @@ typedef struct
                                         
 #define __HAL_RCC_USB_OTG_FS_CLK_DISABLE() (RCC->AHB2ENR &= ~(RCC_AHB2ENR_OTGFSEN))
 
+// [ILG]
+#if 0
 #define __HAL_RCC_RNG_CLK_ENABLE()    do { \
                                         __IO uint32_t tmpreg = 0x00U; \
                                         SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_RNGEN);\
@@ -1985,6 +1987,14 @@ typedef struct
                                         tmpreg = READ_BIT(RCC->AHB2ENR, RCC_AHB2ENR_RNGEN);\
                                         UNUSED(tmpreg); \
                                       } while(0)
+#else
+#define __HAL_RCC_RNG_CLK_ENABLE()    do { \
+                                        __IO uint32_t tmpreg __attribute__((unused)) = 0x00U; \
+                                        SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_RNGEN);\
+                                        /* Delay after an RCC peripheral clock enabling */ \
+                                        tmpreg = READ_BIT(RCC->AHB2ENR, RCC_AHB2ENR_RNGEN);\
+                                      } while(0)
+#endif
 #define __HAL_RCC_RNG_CLK_DISABLE()   (RCC->AHB2ENR &= ~(RCC_AHB2ENR_RNGEN))
 
 #if defined(STM32F407xx)|| defined(STM32F417xx) 
@@ -2166,6 +2176,8 @@ typedef struct
                                       tmpreg = READ_BIT(RCC->APB1ENR, RCC_APB1ENR_DACEN);\
                                       UNUSED(tmpreg); \
                                       } while(0)
+// [ILG]
+#if 0
 #define __HAL_RCC_TIM2_CLK_ENABLE()     do { \
                                         __IO uint32_t tmpreg = 0x00U; \
                                         SET_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM2EN);\
@@ -2173,6 +2185,14 @@ typedef struct
                                         tmpreg = READ_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM2EN);\
                                         UNUSED(tmpreg); \
                                       } while(0)
+#else
+#define __HAL_RCC_TIM2_CLK_ENABLE()     do { \
+                                        __IO uint32_t tmpreg __attribute__((unused)) = 0x00U; \
+                                        SET_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM2EN);\
+                                        /* Delay after an RCC peripheral clock enabling */ \
+                                        tmpreg = READ_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM2EN);\
+                                      } while(0)
+#endif
 #define __HAL_RCC_TIM3_CLK_ENABLE()     do { \
                                         __IO uint32_t tmpreg = 0x00U; \
                                         SET_BIT(RCC->APB1ENR, RCC_APB1ENR_TIM3EN);\
