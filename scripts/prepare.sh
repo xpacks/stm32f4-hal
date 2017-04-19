@@ -7,6 +7,8 @@ IFS=$'\n\t'
 # This file is part of the xPacks project (https://xpacks.github.io).
 #
 
+# https://sourceforge.net/projects/micro-os-plus/files/Vendor%20Archives/STM32/
+
 # RELEASE_VERSION="100"
 # RELEASE_VERSION="110"
 # RELEASE_VERSION="120"
@@ -19,13 +21,15 @@ IFS=$'\n\t'
 # RELEASE_VERSION="190"
 # RELEASE_VERSION="1100"
 # RELEASE_VERSION="1110"
-RELEASE_VERSION="1.12.0"
+# RELEASE_VERSION="1.12.0"
+RELEASE_VERSION="1.13.0"
 
 FAMILY="STM32F4"
 GITHUB_PROJECT="xpacks/stm32f4-hal"
 
-# RELEASE_NAME="stm32cube_fw_f4_v${RELEASE_VERSION}"
-RELEASE_NAME="en.stm32cubef4_v${RELEASE_VERSION}"
+RELEASE_VERSION_COMPACT=$(echo ${RELEASE_VERSION} | sed 's/\.//g')
+RELEASE_NAME="stm32cube_fw_f4_v${RELEASE_VERSION_COMPACT}"
+# RELEASE_NAME="en.stm32cubef4_v${RELEASE_VERSION}"
 
 ARCHIVE_NAME="${RELEASE_NAME}.zip"
 ARCHIVE_URL="https://sourceforge.net/projects/micro-os-plus/files/Vendor%20Archives/STM32/${ARCHIVE_NAME}"

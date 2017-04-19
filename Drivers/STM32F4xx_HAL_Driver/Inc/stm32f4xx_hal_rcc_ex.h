@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_rcc_ex.h
   * @author  MCD Application Team
-  * @version V1.5.0
-  * @date    06-May-2016
+  * @version V1.5.1
+  * @date    01-July-2016
   * @brief   Header file of RCC HAL Extension module.
   ******************************************************************************
   * @attention
@@ -4779,7 +4779,7 @@ typedef struct
   *         using it. 
   * @{
   */
-#if defined(STM32F412Zx) || defined(STM32F412Vx)
+#if defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx)
 #define __HAL_RCC_FSMC_CLK_ENABLE()    do { \
                                       __IO uint32_t tmpreg = 0x00U; \
                                       SET_BIT(RCC->AHB3ENR, RCC_AHB3ENR_FSMCEN);\
@@ -4797,18 +4797,7 @@ typedef struct
 
 #define __HAL_RCC_FSMC_CLK_DISABLE()    (RCC->AHB3ENR &= ~(RCC_AHB3ENR_FSMCEN))
 #define __HAL_RCC_QSPI_CLK_DISABLE()    (RCC->AHB3ENR &= ~(RCC_AHB3ENR_QSPIEN))
-#endif /* STM32F412Zx || STM32F412Vx */ 
-#if defined(STM32F412Rx)
-#define __HAL_RCC_QSPI_CLK_ENABLE()   do { \
-                                      __IO uint32_t tmpreg = 0x00U; \
-                                      SET_BIT(RCC->AHB3ENR, RCC_AHB3ENR_QSPIEN);\
-                                      /* Delay after an RCC peripheral clock enabling */ \
-                                      tmpreg = READ_BIT(RCC->AHB3ENR, RCC_AHB3ENR_QSPIEN);\
-                                      UNUSED(tmpreg); \
-                                      } while(0)
-
-#define __HAL_RCC_QSPI_CLK_DISABLE()    (RCC->AHB3ENR &= ~(RCC_AHB3ENR_QSPIEN))
-#endif /* STM32F412Rx */
+#endif /* STM32F412Zx || STM32F412Vx || STM32F412Rx */ 
 /**
   * @}
   */
@@ -4820,17 +4809,13 @@ typedef struct
   *         using it.
   * @{
   */
-#if defined(STM32F412Zx) || defined(STM32F412Vx)
+#if defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx)
 #define __HAL_RCC_FSMC_IS_CLK_ENABLED()  ((RCC->AHB3ENR & (RCC_AHB3ENR_FSMCEN)) != RESET) 
 #define __HAL_RCC_QSPI_IS_CLK_ENABLED()  ((RCC->AHB3ENR & (RCC_AHB3ENR_QSPIEN)) != RESET) 
 
 #define __HAL_RCC_FSMC_IS_CLK_DISABLED() ((RCC->AHB3ENR & (RCC_AHB3ENR_FSMCEN)) == RESET)
 #define __HAL_RCC_QSPI_IS_CLK_DISABLED() ((RCC->AHB3ENR & (RCC_AHB3ENR_QSPIEN)) == RESET)
-#endif /* STM32F412Zx || STM32F412Vx */ 
-#if defined(STM32F412Rx)
-#define __HAL_RCC_QSPI_IS_CLK_ENABLED()  ((RCC->AHB3ENR & (RCC_AHB3ENR_QSPIEN)) != RESET) 
-#define __HAL_RCC_QSPI_IS_CLK_DISABLED() ((RCC->AHB3ENR & (RCC_AHB3ENR_QSPIEN)) == RESET)
-#endif /* STM32F412Rx */
+#endif /* STM32F412Zx || STM32F412Vx || STM32F412Rx */ 
 /**
   * @}
   */
@@ -5147,7 +5132,7 @@ typedef struct
   * @brief  Force or release AHB3 peripheral reset.
   * @{
   */ 
-#if defined(STM32F412Zx) || defined(STM32F412Vx)
+#if defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx)
 #define __HAL_RCC_AHB3_FORCE_RESET() (RCC->AHB3RSTR = 0xFFFFFFFFU)
 #define __HAL_RCC_AHB3_RELEASE_RESET() (RCC->AHB3RSTR = 0x00U) 
 
@@ -5156,7 +5141,7 @@ typedef struct
 
 #define __HAL_RCC_FSMC_RELEASE_RESET()    (RCC->AHB3RSTR &= ~(RCC_AHB3RSTR_FSMCRST))
 #define __HAL_RCC_QSPI_RELEASE_RESET()   (RCC->AHB3RSTR &= ~(RCC_AHB3RSTR_QSPIRST))
-#endif /* STM32F412Zx || STM32F412Vx */ 
+#endif /* STM32F412Zx || STM32F412Vx || STM32F412Rx */ 
 #if defined(STM32F412Cx)
 #define __HAL_RCC_AHB3_FORCE_RESET()
 #define __HAL_RCC_AHB3_RELEASE_RESET()
@@ -5167,16 +5152,6 @@ typedef struct
 #define __HAL_RCC_FSMC_RELEASE_RESET()
 #define __HAL_RCC_QSPI_RELEASE_RESET()
 #endif /* STM32F412Cx */
-#if defined(STM32F412Rx)
-#define __HAL_RCC_AHB3_FORCE_RESET() (RCC->AHB3RSTR = 0xFFFFFFFFU)
-#define __HAL_RCC_AHB3_RELEASE_RESET() (RCC->AHB3RSTR = 0x00U) 
-
-#define __HAL_RCC_FSMC_FORCE_RESET()
-#define __HAL_RCC_QSPI_FORCE_RESET()   (RCC->AHB3RSTR |= (RCC_AHB3RSTR_QSPIRST))
-
-#define __HAL_RCC_FSMC_RELEASE_RESET()
-#define __HAL_RCC_QSPI_RELEASE_RESET()   (RCC->AHB3RSTR &= ~(RCC_AHB3RSTR_QSPIRST))
-#endif /* STM32F412Rx */
 /**
   * @}
   */
@@ -5296,18 +5271,14 @@ typedef struct
   * @note   By default, all peripheral clocks are enabled during SLEEP mode.
   * @{
   */
-#if defined(STM32F412Zx) || defined(STM32F412Vx)
+#if defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx)
 #define __HAL_RCC_FSMC_CLK_SLEEP_ENABLE()   (RCC->AHB3LPENR |= (RCC_AHB3LPENR_FSMCLPEN))
 #define __HAL_RCC_QSPI_CLK_SLEEP_ENABLE()  (RCC->AHB3LPENR |= (RCC_AHB3LPENR_QSPILPEN))
 
 #define __HAL_RCC_FSMC_CLK_SLEEP_DISABLE()   (RCC->AHB3LPENR &= ~(RCC_AHB3LPENR_FSMCLPEN))
 #define __HAL_RCC_QSPI_CLK_SLEEP_DISABLE()  (RCC->AHB3LPENR &= ~(RCC_AHB3LPENR_QSPILPEN))
-#endif /* STM32F412Zx || STM32F412Vx */ 
+#endif /* STM32F412Zx || STM32F412Vx || STM32F412Rx */
 
-#if defined(STM32F412Rx)
-#define __HAL_RCC_QSPI_CLK_SLEEP_ENABLE()  (RCC->AHB3LPENR |= (RCC_AHB3LPENR_QSPILPEN))
-#define __HAL_RCC_QSPI_CLK_SLEEP_DISABLE()  (RCC->AHB3LPENR &= ~(RCC_AHB3LPENR_QSPILPEN))
-#endif /* STM32F412Rx */
 /**
   * @}
   */
