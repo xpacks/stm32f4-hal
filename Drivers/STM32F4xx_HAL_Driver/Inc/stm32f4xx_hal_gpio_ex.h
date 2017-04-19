@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_gpio_ex.h
   * @author  MCD Application Team
-  * @version V1.5.0
-  * @date    06-May-2016
+  * @version V1.5.1
+  * @date    01-July-2016
   * @brief   Header file of GPIO HAL Extension module.
   ******************************************************************************
   * @attention
@@ -1154,8 +1154,7 @@
                                                ((__GPIOx__) == (GPIOE))? 4U :\
                                                ((__GPIOx__) == (GPIOF))? 5U :\
                                                ((__GPIOx__) == (GPIOG))? 6U :\
-                                               ((__GPIOx__) == (GPIOH))? 7U :\
-                                               ((__GPIOx__) == (GPIOI))? 8U : 9U)
+                                               ((__GPIOx__) == (GPIOH))? 7U : 8U)
 #endif /* STM32F405xx || STM32F415xx || STM32F407xx || STM32F417xx */
 
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\
@@ -1175,8 +1174,7 @@
 #if defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx) 
 #define GPIO_GET_INDEX(__GPIOx__)    (uint8_t)(((__GPIOx__) == (GPIOA))? 0U :\
                                                ((__GPIOx__) == (GPIOB))? 1U :\
-                                               ((__GPIOx__) == (GPIOC))? 2U :\
-                                               ((__GPIOx__) == (GPIOH))? 7U : 8U)
+                                               ((__GPIOx__) == (GPIOC))? 2U : 7U)
 #endif /* STM32F410Tx || STM32F410Cx || STM32F410Rx */
 
 #if defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE) 
@@ -1184,7 +1182,7 @@
                                                ((__GPIOx__) == (GPIOB))? 1U :\
                                                ((__GPIOx__) == (GPIOC))? 2U :\
                                                ((__GPIOx__) == (GPIOD))? 3U :\
-                                               ((__GPIOx__) == (GPIOE))? 4U : 5U)
+                                               ((__GPIOx__) == (GPIOE))? 4U : 7U)
 #endif /* STM32F401xC || STM32F401xE || STM32F411xE */
 
 #if defined(STM32F446xx) || defined(STM32F412Zx) ||defined(STM32F412Vx) || defined(STM32F412Rx) || defined(STM32F412Cx)  
@@ -1194,7 +1192,7 @@
                                                ((__GPIOx__) == (GPIOD))? 3U :\
                                                ((__GPIOx__) == (GPIOE))? 4U :\
                                                ((__GPIOx__) == (GPIOF))? 5U :\
-                                               ((__GPIOx__) == (GPIOG))? 6U : 8U)
+                                               ((__GPIOx__) == (GPIOG))? 6U : 7U)
 #endif /* STM32F446xx || STM32F412Zx || STM32F412Vx || STM32F412Rx || STM32F412Cx */
 
 /**

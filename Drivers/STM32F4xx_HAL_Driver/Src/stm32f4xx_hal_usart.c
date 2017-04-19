@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_usart.c
   * @author  MCD Application Team
-  * @version V1.5.0
-  * @date    06-May-2016
+  * @version V1.5.1
+  * @date    01-July-2016
   * @brief   USART HAL module driver.
   *          This file provides firmware functions to manage the following
   *          functionalities of the Universal Synchronous Asynchronous Receiver Transmitter (USART) peripheral:
@@ -772,11 +772,8 @@ HAL_StatusTypeDef HAL_USART_Receive_IT(USART_HandleTypeDef *husart, uint8_t *pRx
     /* Process Unlocked */
     __HAL_UNLOCK(husart);
 
-    /* Enable the USART Data Register not empty Interrupt */
-    SET_BIT(husart->Instance->CR1, USART_CR1_RXNEIE);
-
-    /* Enable the USART Parity Error Interrupt */
-    SET_BIT(husart->Instance->CR1, USART_CR1_PEIE);
+    /* Enable the USART Parity Error and Data Register not empty Interrupts */
+    SET_BIT(husart->Instance->CR1, USART_CR1_PEIE | USART_CR1_RXNEIE);
 
     /* Enable the USART Error Interrupt: (Frame error, noise error, overrun error) */
     SET_BIT(husart->Instance->CR3, USART_CR3_EIE);
@@ -1214,7 +1211,7 @@ void HAL_USART_IRQHandler(USART_HandleTypeDef *husart)
     }
   }
   /* If some errors occur */
-  if((errorflags != RESET) && ((cr3its & (USART_CR3_EIE | USART_CR1_PEIE)) != RESET))
+  if((errorflags != RESET) && (((cr3its & USART_CR3_EIE) != RESET) || ((cr1its & (USART_CR1_RXNEIE | USART_CR1_PEIE)) != RESET)))
   {
     /* USART parity error interrupt occurred ----------------------------------*/
     if(((isrflags & USART_SR_PE) != RESET) && ((cr1its & USART_CR1_PEIE) != RESET))

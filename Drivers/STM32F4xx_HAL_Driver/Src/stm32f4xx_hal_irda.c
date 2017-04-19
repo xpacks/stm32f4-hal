@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_irda.c
   * @author  MCD Application Team
-  * @version V1.5.0
-  * @date    06-May-2016
+  * @version V1.5.1
+  * @date    01-July-2016
   * @brief   IRDA HAL module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of the IrDA SIR ENDEC block (IrDA):
@@ -624,16 +624,13 @@ HAL_StatusTypeDef HAL_IRDA_Receive_IT(IRDA_HandleTypeDef *hirda, uint8_t *pData,
     
     /* Process Unlocked */
     __HAL_UNLOCK(hirda);
-    
-    /* Enable the IRDA Data Register not empty Interrupt */
-    SET_BIT(hirda->Instance->CR1, USART_CR1_RXNEIE);
-    
-    /* Enable the IRDA Parity Error Interrupt */
-    SET_BIT(hirda->Instance->CR1, USART_CR1_PEIE);
-    
+
+    /* Enable the IRDA Parity Error and Data Register not empty Interrupts */
+    SET_BIT(hirda->Instance->CR1, USART_CR1_PEIE| USART_CR1_RXNEIE);
+
     /* Enable the IRDA Error Interrupt: (Frame error, noise error, overrun error) */
     SET_BIT(hirda->Instance->CR3, USART_CR3_EIE);
-    
+
     return HAL_OK;
   }
   else
@@ -915,7 +912,7 @@ void HAL_IRDA_IRQHandler(IRDA_HandleTypeDef *hirda)
   }  
 
   /* If some errors occur */
-  if((errorflags != RESET) && ((cr3its & (USART_CR3_EIE | USART_CR1_PEIE)) != RESET))
+  if((errorflags != RESET) && (((cr3its & USART_CR3_EIE) != RESET) || ((cr1its & (USART_CR1_RXNEIE | USART_CR1_PEIE)) != RESET)))
   {
     /* IRDA parity error interrupt occurred -------------------------------*/
     if(((isrflags & USART_SR_PE) != RESET) && ((cr1its & USART_CR1_PEIE) != RESET))

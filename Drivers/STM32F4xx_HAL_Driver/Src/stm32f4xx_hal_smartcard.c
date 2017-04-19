@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    stm32f4xx_hal_smartcard.c
   * @author  MCD Application Team
-  * @version V1.5.0
-  * @date    06-May-2016
+  * @version V1.5.1
+  * @date    01-July-2016
   * @brief   SMARTCARD HAL module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of the SMARTCARD peripheral:
@@ -617,12 +617,9 @@ HAL_StatusTypeDef HAL_SMARTCARD_Receive_IT(SMARTCARD_HandleTypeDef *hsc, uint8_t
     
     /* Process Unlocked */
     __HAL_UNLOCK(hsc);
-    
-    /* Enable the SMARTCARD Data Register not empty Interrupt */
-    SET_BIT(hsc->Instance->CR1, USART_CR1_RXNEIE);
 
-    /* Enable the SMARTCARD Parity Error Interrupt */
-    SET_BIT(hsc->Instance->CR1, USART_CR1_PEIE);
+    /* Enable the SMARTCARD Parity Error and Data Register not empty Interrupts */
+    SET_BIT(hsc->Instance->CR1, USART_CR1_PEIE| USART_CR1_RXNEIE);
 
     /* Enable the SMARTCARD Error Interrupt: (Frame error, noise error, overrun error) */
     SET_BIT(hsc->Instance->CR3, USART_CR3_EIE);
@@ -787,7 +784,7 @@ void HAL_SMARTCARD_IRQHandler(SMARTCARD_HandleTypeDef *hsc)
   }
 
   /* If some errors occur */
-  if((errorflags != RESET) && ((cr3its & (USART_CR3_EIE | USART_CR1_PEIE)) != RESET))
+  if((errorflags != RESET) && (((cr3its & USART_CR3_EIE) != RESET) || ((cr1its & (USART_CR1_RXNEIE | USART_CR1_PEIE)) != RESET)))
   {
     /* SMARTCARD parity error interrupt occurred ---------------------------*/
     if(((isrflags & SMARTCARD_FLAG_PE) != RESET) && ((cr1its & USART_CR1_PEIE) != RESET))
