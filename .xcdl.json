@@ -1,5 +1,0 @@
-{
-	"$schema": "http://xcdl.github.io/schemas/xcdl-1-1.json",
-	"name": "/ilg/stm/stm32f4/hal",
-	"description": "STM32F4 HAL files."
-}
