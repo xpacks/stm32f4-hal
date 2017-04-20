@@ -5,29 +5,28 @@ includes the STM32F4 HAL files.
 
 ## Version
 
-* v1.14.0
+* CMSIS Pack v2.11.0
+* ST HAL v1.6.0
 
 ## Documentation
 
 The latest STM documentation is available from
 [STM32CubeF4](http://www.st.com/web/catalog/tools/FM147/CL1794/SC961/SS1743/LN1897/PF259243).
 
+The latest CMSIS documentation is available from
+[keil.com](http://www.keil.com/cmsis).
+
+The list of latest packs is available from [keil.com](https://www.keil.com/dd2/pack/).
+
 ## Original files
 
 The original files are available in the `originals` branch.
 
-These files were extracted from `stm32cube_fw_f4_v1140.zip`.
+These files were extracted from `Keil.STM32F4xx_DFP.2.11.0.pack`.
 
-To save space, only the following folder was copied:
+To save space, only the following folders were preserved:
 
-* STM32Cube\_FW\_*/Drivers
-
-and from it, the following folders/files were removed:
-
-* all non-portable *.exe files
-* Drivers/BSP/
-* Drivers/CMSIS/
-* Drivers/STM32F?xx\_HAL\_Driver/*.chm
+* Drivers/STM32F\?xx\_HAL\_Driver/
 
 ## Changes
 
