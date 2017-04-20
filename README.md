@@ -30,7 +30,7 @@ To save space, only the following folders were preserved:
 
 ## Changes
 
-* `stm32f4xx\_hal.h`: silence `-Wpadded`.
+* `stm32f4xx_hal.h`: silence `-Wpadded`.
 
 ## Warnings
 
